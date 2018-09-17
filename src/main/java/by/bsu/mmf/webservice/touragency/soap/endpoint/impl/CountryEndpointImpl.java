@@ -28,6 +28,16 @@ public class CountryEndpointImpl implements CountryEndpoint {
         return countryResponse;
     }
 
+    @Override
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getCountriesRequest")
+    @ResponsePayload
+    public GetCountriesResponse getCountries(@RequestPayload GetCountriesRequest getCountriesRequest) {
+        List<Country> countries = this.countryService.findAll();
+        GetCountriesResponse countriesResponse = new GetCountriesResponse();
+        countriesResponse.setCountries(countries);
+        return countriesResponse;
+    }
+
     @Autowired
     public void setCountryService(CountryService countryService) {
         this.countryService = countryService;
