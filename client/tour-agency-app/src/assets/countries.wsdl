@@ -1,0 +1,185 @@
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
+    xmlns:sch="http://touragency.com" 
+    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+    xmlns:tns="http://touragency.com" targetNamespace="http://touragency.com">
+    <wsdl:types>
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://touragency.com">
+            <xs:element name="getCountryRequest">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="id" type="xs:long"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getCountryResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="country" type="tns:country"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getCountriesRequest"/>
+            <xs:element name="getCountriesResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="data" type="tns:country"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="deleteCountryRequest">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="id" type="xs:long"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="deleteCountryResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="country" type="tns:country"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="updateCountryRequest">
+                <xs:complexType >
+                    <xs:sequence>
+                        <xs:element name="id" type="xs:long"/>
+                        <xs:element name="name" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="updateCountryResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="country" type="tns:country"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="saveCountryRequest">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="name" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="saveCountryResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="country" type="tns:country"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:complexType name="country">
+                <xs:sequence>
+                    <xs:element name="id" type="xs:long"/>
+                    <xs:element name="name" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="getCountriesRequest">
+        <wsdl:part element="tns:getCountriesRequest" name="getCountriesRequest"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="updateCountryResponse">
+        <wsdl:part element="tns:updateCountryResponse" name="updateCountryResponse"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="updateCountryRequest">
+        <wsdl:part element="tns:updateCountryRequest" name="updateCountryRequest"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="deleteCountryRequest">
+        <wsdl:part element="tns:deleteCountryRequest" name="deleteCountryRequest"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getCountryRequest">
+        <wsdl:part element="tns:getCountryRequest" name="getCountryRequest"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="deleteCountryResponse">
+        <wsdl:part element="tns:deleteCountryResponse" name="deleteCountryResponse"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getCountriesResponse">
+        <wsdl:part element="tns:getCountriesResponse" name="getCountriesResponse"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getCountryResponse">
+        <wsdl:part element="tns:getCountryResponse" name="getCountryResponse"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="saveCountryResponse">
+        <wsdl:part element="tns:saveCountryResponse" name="saveCountryResponse"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="saveCountryRequest">
+        <wsdl:part element="tns:saveCountryRequest" name="saveCountryRequest"></wsdl:part>
+    </wsdl:message>
+    <wsdl:portType name="CountryPort">
+        <wsdl:operation name="getCountries">
+            <wsdl:input message="tns:getCountriesRequest" name="getCountriesRequest"></wsdl:input>
+            <wsdl:output message="tns:getCountriesResponse" name="getCountriesResponse"></wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="updateCountry">
+            <wsdl:input message="tns:updateCountryRequest" name="updateCountryRequest"></wsdl:input>
+            <wsdl:output message="tns:updateCountryResponse" name="updateCountryResponse"></wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteCountry">
+            <wsdl:input message="tns:deleteCountryRequest" name="deleteCountryRequest"></wsdl:input>
+            <wsdl:output message="tns:deleteCountryResponse" name="deleteCountryResponse"></wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getCountry">
+            <wsdl:input message="tns:getCountryRequest" name="getCountryRequest"></wsdl:input>
+            <wsdl:output message="tns:getCountryResponse" name="getCountryResponse"></wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="saveCountry">
+            <wsdl:input message="tns:saveCountryRequest" name="saveCountryRequest"></wsdl:input>
+            <wsdl:output message="tns:saveCountryResponse" name="saveCountryResponse"></wsdl:output>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="CountryPortSoap11" type="tns:CountryPort">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="getCountries">
+            <soap:operation soapAction="http://touragency.com/Country/getCountries"/>
+            <wsdl:input name="getCountriesRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="getCountriesResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="updateCountry">
+            <soap:operation soapAction="http://touragency.com/Country/updateCountry"/>
+            <wsdl:input name="updateCountryRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="updateCountryResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteCountry">
+            <soap:operation soapAction="http://touragency.com/Country/deleteCountry"/>
+            <wsdl:input name="deleteCountryRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="deleteCountryResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getCountry">
+            <soap:operation soapAction="http://touragency.com/Country/getCountry"/>
+            <wsdl:input name="getCountryRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="getCountryResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="saveCountry">
+            <soap:operation soapAction="http://touragency.com/Country/saveCountry"/>
+            <wsdl:input name="saveCountryRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="saveCountryResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="CountryPortService">
+        <wsdl:port binding="tns:CountryPortSoap11" name="CountryPortSoap11">
+            <soap:address location="http://localhost:8080/ws"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
