@@ -47,8 +47,7 @@ public class WebServiceConfig extends WsConfigurerAdapter {
     }
 
     @Bean(name = "countries")
-    @Qualifier("countries")
-    public DefaultWsdl11Definition defaultWsdl11CountriesDefinition(XsdSchema schema) {
+    public DefaultWsdl11Definition defaultWsdl11CountriesDefinition(@Qualifier("countriesXsd") XsdSchema schema) {
         DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
         wsdl11Definition.setPortTypeName("CountryPort");
         wsdl11Definition.setLocationUri("/ws");
@@ -58,8 +57,7 @@ public class WebServiceConfig extends WsConfigurerAdapter {
     }
 
     @Bean(name = "tours")
-    @Qualifier("tours")
-    public DefaultWsdl11Definition defaultWsdl11ToursDefinition(XsdSchema schema) {
+    public DefaultWsdl11Definition defaultWsdl11ToursDefinition(@Qualifier("toursXsd") XsdSchema schema) {
         DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
         wsdl11Definition.setPortTypeName("TourPort");
         wsdl11Definition.setLocationUri("/ws");
@@ -69,13 +67,13 @@ public class WebServiceConfig extends WsConfigurerAdapter {
     }
 
     @Bean
-    @Qualifier("countries")
+    @Qualifier("countriesXsd")
     public XsdSchema countriesSchema() {
         return new SimpleXsdSchema(new ClassPathResource("countries.xsd"));
     }
 
     @Bean
-    @Qualifier("tours")
+    @Qualifier("toursXsd")
     public XsdSchema toursSchema() {
         return new SimpleXsdSchema(new ClassPathResource("tours.xsd"));
     }

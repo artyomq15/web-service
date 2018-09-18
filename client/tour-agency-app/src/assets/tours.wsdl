@@ -1,0 +1,233 @@
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
+    xmlns:sch="http://touragency.com" 
+    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+    xmlns:tns="http://touragency.com" targetNamespace="http://touragency.com">
+    <wsdl:types>
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://touragency.com">
+            <xs:element name="getTourRequest">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="id" type="xs:long"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getTourResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="tour" type="tns:tour"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getToursRequest"/>
+            <xs:element name="getToursResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="data" type="tns:tour"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="deleteTourRequest">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="id" type="xs:long"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="deleteTourResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="tour" type="tns:tour"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="updateTourRequest">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="id" type="xs:long"/>
+                        <xs:element name="date" type="xs:date"/>
+                        <xs:element name="description" type="xs:string"/>
+                        <xs:element name="cost" type="xs:decimal"/>
+                        <xs:element name="countryId" type="xs:long"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="updateTourResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="tour" type="tns:tour"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="saveTourRequest">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="date" type="xs:date"/>
+                        <xs:element name="description" type="xs:string"/>
+                        <xs:element name="cost" type="xs:decimal"/>
+                        <xs:element name="countryId" type="xs:long"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="saveTourResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="tour" type="tns:tour"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getToursByCountryRequest">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="id" type="xs:long"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getToursByCountryResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="data" type="tns:tour"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:complexType name="tour">
+                <xs:sequence>
+                    <xs:element name="id" type="xs:long"/>
+                    <xs:element name="date" type="xs:date"/>
+                    <xs:element name="description" type="xs:string"/>
+                    <xs:element name="cost" type="xs:decimal"/>
+                    <xs:element name="country" type="tns:country"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="country">
+                <xs:sequence>
+                    <xs:element name="id" type="xs:long"/>
+                    <xs:element name="name" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="updateTourRequest">
+        <wsdl:part element="tns:updateTourRequest" name="updateTourRequest"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="saveTourResponse">
+        <wsdl:part element="tns:saveTourResponse" name="saveTourResponse"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getTourRequest">
+        <wsdl:part element="tns:getTourRequest" name="getTourRequest"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getToursByCountryRequest">
+        <wsdl:part element="tns:getToursByCountryRequest" name="getToursByCountryRequest"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="saveTourRequest">
+        <wsdl:part element="tns:saveTourRequest" name="saveTourRequest"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getTourResponse">
+        <wsdl:part element="tns:getTourResponse" name="getTourResponse"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getToursRequest">
+        <wsdl:part element="tns:getToursRequest" name="getToursRequest"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="updateTourResponse">
+        <wsdl:part element="tns:updateTourResponse" name="updateTourResponse"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getToursResponse">
+        <wsdl:part element="tns:getToursResponse" name="getToursResponse"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="deleteTourRequest">
+        <wsdl:part element="tns:deleteTourRequest" name="deleteTourRequest"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getToursByCountryResponse">
+        <wsdl:part element="tns:getToursByCountryResponse" name="getToursByCountryResponse"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="deleteTourResponse">
+        <wsdl:part element="tns:deleteTourResponse" name="deleteTourResponse"></wsdl:part>
+    </wsdl:message>
+    <wsdl:portType name="TourPort">
+        <wsdl:operation name="updateTour">
+            <wsdl:input message="tns:updateTourRequest" name="updateTourRequest"></wsdl:input>
+            <wsdl:output message="tns:updateTourResponse" name="updateTourResponse"></wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="saveTour">
+            <wsdl:input message="tns:saveTourRequest" name="saveTourRequest"></wsdl:input>
+            <wsdl:output message="tns:saveTourResponse" name="saveTourResponse"></wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getTour">
+            <wsdl:input message="tns:getTourRequest" name="getTourRequest"></wsdl:input>
+            <wsdl:output message="tns:getTourResponse" name="getTourResponse"></wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getToursByCountry">
+            <wsdl:input message="tns:getToursByCountryRequest" name="getToursByCountryRequest"></wsdl:input>
+            <wsdl:output message="tns:getToursByCountryResponse" name="getToursByCountryResponse"></wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getTours">
+            <wsdl:input message="tns:getToursRequest" name="getToursRequest"></wsdl:input>
+            <wsdl:output message="tns:getToursResponse" name="getToursResponse"></wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteTour">
+            <wsdl:input message="tns:deleteTourRequest" name="deleteTourRequest"></wsdl:input>
+            <wsdl:output message="tns:deleteTourResponse" name="deleteTourResponse"></wsdl:output>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="TourPortSoap11" type="tns:TourPort">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="updateTour">
+            <soap:operation soapAction="http://touragency.com/Tour/updateTour"/>
+            <wsdl:input name="updateTourRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="updateTourResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="saveTour">
+            <soap:operation soapAction="http://touragency.com/Tour/saveTour"/>
+            <wsdl:input name="saveTourRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="saveTourResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getTour">
+            <soap:operation soapAction="http://touragency.com/Tour/getTour"/>
+            <wsdl:input name="getTourRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="getTourResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getToursByCountry">
+            <soap:operation soapAction="http://touragency.com/Tour/getToursByCountry"/>
+            <wsdl:input name="getToursByCountryRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="getToursByCountryResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getTours">
+            <soap:operation soapAction="http://touragency.com/Tour/getTours"/>
+            <wsdl:input name="getToursRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="getToursResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteTour">
+            <soap:operation soapAction="http://touragency.com/Tour/deleteTour"/>
+            <wsdl:input name="deleteTourRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="deleteTourResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="TourPortService">
+        <wsdl:port binding="tns:TourPortSoap11" name="TourPortSoap11">
+            <soap:address location="http://localhost:8080/ws"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
