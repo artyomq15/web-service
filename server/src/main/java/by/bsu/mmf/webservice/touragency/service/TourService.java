@@ -1,11 +1,11 @@
-package by.bsu.mmf.webservice.touragency.repository;
+package by.bsu.mmf.webservice.touragency.service;
 
 import by.bsu.mmf.webservice.touragency.domain.Tour;
 
 import java.util.List;
 import java.util.Optional;
 
-public interface TourRepository {
+public interface TourService {
     List<Tour> findAll();
     Optional<Tour> findOne(Long id);
     Optional<Tour> save(Tour tour);

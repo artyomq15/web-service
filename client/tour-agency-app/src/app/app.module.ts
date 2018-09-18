@@ -8,11 +8,13 @@ import { CountryModifierComponent } from './country-modifier/country-modifier.co
 import { NgxSoapModule } from 'ngx-soap';
 import { CountrySoapService } from './services/country.soap.service';
 import { CountryService } from './services/CountryService';
+import { TourModifierComponent } from './tour-modifier/tour-modifier.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CountryModifierComponent
+    CountryModifierComponent,
+    TourModifierComponent
   ],
   imports: [
     FormsModule,

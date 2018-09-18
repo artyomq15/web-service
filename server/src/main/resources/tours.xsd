@@ -1,0 +1,117 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://touragency.com"
+           targetNamespace="http://touragency.com" elementFormDefault="qualified">
+
+    <xs:element name="getTourRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getTourResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="tour" type="tns:tour"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getToursRequest"/>
+
+    <xs:element name="getToursResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="data" type="tns:tour" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="deleteTourRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="deleteTourResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="tour" type="tns:tour"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="updateTourRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long"/>
+                <xs:element name="date" type="xs:date"/>
+                <xs:element name="description" type="xs:string"/>
+                <xs:element name="cost" type="xs:decimal"/>
+                <xs:element name="countryId" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="updateTourResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="tour" type="tns:tour"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="saveTourRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="date" type="xs:date"/>
+                <xs:element name="description" type="xs:string"/>
+                <xs:element name="cost" type="xs:decimal"/>
+                <xs:element name="countryId" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="saveTourResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="tour" type="tns:tour"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getToursByCountryRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getToursByCountryResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="data" type="tns:tour" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="tour">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="date" type="xs:date"/>
+            <xs:element name="description" type="xs:string"/>
+            <xs:element name="cost" type="xs:decimal"/>
+            <xs:element name="country" type="tns:country"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="country">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="name" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

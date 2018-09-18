@@ -5,7 +5,6 @@ import by.bsu.mmf.webservice.touragency.service.CountryService;
 import by.bsu.mmf.webservice.touragency.soap.domain.country.*;
 import by.bsu.mmf.webservice.touragency.soap.endpoint.CountryEndpoint;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
