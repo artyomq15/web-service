@@ -7,10 +7,10 @@ import javax.xml.bind.annotation.*;
 
 @Data
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = { "country" })
-@XmlRootElement(name = "getCountryResponse")
-public class GetCountryResponse {
-
-    @XmlElement(required = true)
-    private Country country;
+@XmlType(name = "", propOrder = { "id", "name" })
+@XmlRootElement(name = "updateCountryRequest")
+public class UpdateCountryRequest {
+    private Long id;
+    private String name;
 }
+

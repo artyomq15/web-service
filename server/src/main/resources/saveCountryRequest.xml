@@ -1,0 +1,9 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+                  xmlns:gs="http://touragency.com">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <gs:saveCountryRequest>
+            <gs:name>Spain</gs:name>
+        </gs:saveCountryRequest>
+    </soapenv:Body>
+</soapenv:Envelope>

@@ -43,12 +43,14 @@
         </xs:complexType>
     </xs:element>
 
-    <xs:complexType name="updateCountryRequest">
-        <xs:sequence>
-            <xs:element name="id" type="xs:long"/>
-            <xs:element name="name" type="xs:string"/>
-        </xs:sequence>
-    </xs:complexType>
+    <xs:element name="updateCountryRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long"/>
+                <xs:element name="name" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
 
     <xs:element name="updateCountryResponse">
         <xs:complexType>
@@ -58,11 +60,13 @@
         </xs:complexType>
     </xs:element>
 
-    <xs:complexType name="saveCountryRequest">
-        <xs:sequence>
-            <xs:element name="name" type="xs:string"/>
-        </xs:sequence>
-    </xs:complexType>
+    <xs:element name="saveCountryRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="name" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
 
     <xs:element name="saveCountryResponse">
         <xs:complexType>
