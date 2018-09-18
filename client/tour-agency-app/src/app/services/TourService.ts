@@ -3,7 +3,7 @@ import { Injectable } from "@angular/core";
 import { Tour } from "../domain/Tour";
 
 @Injectable()
-export abstract class CountryService {
+export abstract class TourService {
     abstract findAll(): Observable<Tour[]>;
     abstract findByCountry(id: number): Observable<Tour[]>;
     abstract findOne(id: number): Observable<Tour>;

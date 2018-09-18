@@ -68,7 +68,6 @@ public class TourRepositoryJDBCImpl implements TourRepository {
                 .addValue(Query.COUNTRY_ID, tour.getCountryId());
 
         try {
-
             jdbcTemplate.update(Query.INSERT_TOUR, sqlParameterSource, keyHolder, new String[]{Query.TOUR_ID});
             tour.setId(keyHolder.getKey().longValue());
 
@@ -143,7 +142,7 @@ public class TourRepositoryJDBCImpl implements TourRepository {
         public Tour mapRow(ResultSet rs, int rowNum) throws SQLException {
             return new Tour(
                     rs.getLong(Query.TOUR_ID),
-                    rs.getDate(Query.TOUR_DATE).toLocalDate(),
+                    rs.getDate(Query.TOUR_DATE).toString(),
                     rs.getString(Query.TOUR_DESCRIPTION),
                     rs.getBigDecimal(Query.TOUR_COST),
                     rs.getLong(Query.COUNTRY_ID)
@@ -162,24 +161,24 @@ public class TourRepositoryJDBCImpl implements TourRepository {
 
         private static final String TOUR_COST = "tour_cost";
 
-        private static final String COUNTRY_ID = "country_id";
+        private static final String COUNTRY_ID = "country_country_id";
 
         private static final String SELECT_ALL_TOURS = "SELECT " +
                 "   tour.tour_id, " +
                 "   tour.tour_date, " +
                 "   tour.tour_description, " +
                 "   tour.tour_cost, " +
-                "   tour.country_id, " +
+                "   tour.country_country_id " +
                 "FROM tour;";
 
-        private static final String INSERT_TOUR = "INSERT INTO tour (tour_date, tour_description, tour_cost, country_id) VALUES ( :tour_date, :tour_description, :tour_cost, :country_id);";
+        private static final String INSERT_TOUR = "INSERT INTO tour (tour_date, tour_description, tour_cost, country_country_id) VALUES ( :tour_date, :tour_description, :tour_cost, :country_country_id);";
 
         private static final String SELECT_TOUR_BY_ID = "SELECT " +
                 "   tour.tour_id, " +
                 "   tour.tour_date, " +
                 "   tour.tour_description, " +
                 "   tour.tour_cost, " +
-                "   tour.country_id, " +
+                "   tour.country_country_id " +
                 "FROM tour " +
                 "WHERE tour.tour_id = :tour_id; ";
 
@@ -188,13 +187,13 @@ public class TourRepositoryJDBCImpl implements TourRepository {
                 "   tour.tour_date, " +
                 "   tour.tour_description, " +
                 "   tour.tour_cost, " +
-                "   tour.country_id, " +
+                "   tour.country_country_id " +
                 "FROM tour " +
-                "WHERE tour.country_id = :country_id; ";
+                "WHERE tour.country_country_id = :country_country_id; ";
 
         private static final String DELETE_TOUR = "DELETE FROM tour WHERE tour_id = :tour_id;";
 
-        private static final String UPDATE_TOUR = "UPDATE tour SET tour_date = :tour_date , tour_description = :tour_description , tour_cost = :tour_cost, country_id = :country_id WHERE tour_id = :tour_id ;";
+        private static final String UPDATE_TOUR = "UPDATE tour SET tour_date = :tour_date , tour_description = :tour_description , tour_cost = :tour_cost, country_country_id = :country_country_id WHERE tour_id = :tour_id ;";
 
     }
 

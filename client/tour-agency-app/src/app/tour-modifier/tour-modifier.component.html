@@ -1,3 +1,85 @@
-<p>
-  tour-modifier works!
-</p>
+<h1>Tours</h1>
+<button (click)="findAllTours()">find all</button>
+<div *ngFor="let tour of tours">
+  <p>
+    #{{tour.id}}. 
+      {{tour.date| date:'MMM, d, y'}}:
+      {{tour.description}}:
+      {{tour.cost}}:
+      {{tour.countryId}}
+  </p>
+</div>
+<hr>
+<form>
+  <input type="number" name="tour-id" [(ngModel)]="getId"/>
+  <input type="submit" value="find" (click)="get()">
+</form>
+<div *ngIf="tour">
+  <p>
+    #{{tour.id}}. 
+      {{tour.date| date:'MMM, d, y'}}:
+      {{tour.description}}:
+      {{tour.cost}}:
+      {{tour.countryId}}
+  </p>  
+</div>
+
+<hr>
+<form>
+  <input type="number" name="tour-country-id" [(ngModel)]="countryId"/>
+  <input type="submit" value="find by country" (click)="getByCountry()">
+</form>
+<div *ngFor="let tour of toursByCountry">
+    <p>
+      #{{tour.id}}. 
+        {{tour.date| date:'MMM, d, y'}}:
+        {{tour.description}}:
+        {{tour.cost}}:
+        {{tour.countryId}}
+    </p>
+  </div>
+
+<hr>
+<form>
+  <input type="date" name="date" [(ngModel)]="saveDate"/>
+  <input type="text" name="description" [(ngModel)]="saveDescription"/>
+  <input type="number" name="cost" [(ngModel)]="saveCost"/>
+  <input type="number" name="country-id" [(ngModel)]="saveCountryId"/>
+  <input type="submit" value="save" (click)="save()">
+</form>
+<div *ngIf="savedTour">
+  #{{savedTour.id}}. 
+  {{savedTour.date| date:'MMM, d, y'}}:
+  {{savedTour.description}}:
+  {{savedTour.cost}}:
+  {{savedTour.countryId}}
+</div>
+
+<hr>
+<form>
+  <input type="number" name="id" [(ngModel)]="updateId"/>
+  <input type="date" name="date" [(ngModel)]="updateDate"/>
+  <input type="text" name="description" [(ngModel)]="updateDescription"/>
+  <input type="number" name="cost" [(ngModel)]="updateCost"/>
+  <input type="number" name="country-id" [(ngModel)]="updateCountryId"/>
+  <input type="submit" value="update" (click)="update()">
+</form>
+<div *ngIf="updatedTour">
+  #{{updatedTour.id}}. 
+  {{updatedTour.date| date:'MMM, d, y'}}:
+  {{updatedTour.description}}:
+  {{updatedTour.cost}}:
+  {{updatedTour.countryId}}
+</div>
+<hr>
+<form>
+  <input type="number" name="tour-id" [(ngModel)]="deleteId"/>
+  <input type="submit" value="delete" (click)="delete()">
+  <div *ngIf="deletedTour">
+      #{{deletedTour.id}}. 
+      {{deletedTour.date| date:'MMM, d, y'}}:
+      {{deletedTour.description}}:
+      {{deletedTour.cost}}:
+      {{deletedTour.countryId}}
+    </div>
+</form>

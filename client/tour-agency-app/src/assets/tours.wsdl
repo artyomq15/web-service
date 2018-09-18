@@ -44,7 +44,7 @@
                 <xs:complexType>
                     <xs:sequence>
                         <xs:element name="id" type="xs:long"/>
-                        <xs:element name="date" type="xs:date"/>
+                        <xs:element name="date" type="xs:string"/>
                         <xs:element name="description" type="xs:string"/>
                         <xs:element name="cost" type="xs:decimal"/>
                         <xs:element name="countryId" type="xs:long"/>
@@ -61,7 +61,7 @@
             <xs:element name="saveTourRequest">
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element name="date" type="xs:date"/>
+                        <xs:element name="date" type="xs:string"/>
                         <xs:element name="description" type="xs:string"/>
                         <xs:element name="cost" type="xs:decimal"/>
                         <xs:element name="countryId" type="xs:long"/>
@@ -95,15 +95,10 @@
                     <xs:element name="date" type="xs:date"/>
                     <xs:element name="description" type="xs:string"/>
                     <xs:element name="cost" type="xs:decimal"/>
-                    <xs:element name="country" type="tns:country"/>
+                    <xs:element name="countryId" type="xs:long"/>
                 </xs:sequence>
             </xs:complexType>
-            <xs:complexType name="country">
-                <xs:sequence>
-                    <xs:element name="id" type="xs:long"/>
-                    <xs:element name="name" type="xs:string"/>
-                </xs:sequence>
-            </xs:complexType>
+            
         </xs:schema>
     </wsdl:types>
     <wsdl:message name="updateTourRequest">

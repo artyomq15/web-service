@@ -6,9 +6,11 @@ import by.bsu.mmf.webservice.touragency.soap.domain.tour.*;
 import by.bsu.mmf.webservice.touragency.soap.endpoint.TourEndpoint;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
+import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 import org.springframework.ws.soap.server.endpoint.annotation.SoapAction;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Endpoint
@@ -21,7 +23,7 @@ public class TourEndpointImpl implements TourEndpoint {
     @Override
     @SoapAction(value = NAMESPACE_URI + "getTour")
     @ResponsePayload
-    public GetTourResponse getTour(GetTourRequest getTourRequest) {
+    public GetTourResponse getTour(@RequestPayload GetTourRequest getTourRequest) {
         Tour tour = tourService.findOne(getTourRequest.getId()).orElse(null);
         GetTourResponse tourResponse = new GetTourResponse();
         tourResponse.setTour(tour);
@@ -31,7 +33,7 @@ public class TourEndpointImpl implements TourEndpoint {
     @Override
     @SoapAction(value = NAMESPACE_URI + "getTours")
     @ResponsePayload
-    public GetToursResponse getTours(GetToursRequest getToursRequest) {
+    public GetToursResponse getTours(@RequestPayload GetToursRequest getToursRequest) {
         List<Tour> tours = tourService.findAll();
         GetToursResponse toursResponse = new GetToursResponse();
         toursResponse.setTours(tours);
@@ -41,7 +43,7 @@ public class TourEndpointImpl implements TourEndpoint {
     @Override
     @SoapAction(value = NAMESPACE_URI + "getToursByCountry")
     @ResponsePayload
-    public GetToursByCountryResponse getToursByCountry(GetToursByCountryRequest getToursByCountryRequest) {
+    public GetToursByCountryResponse getToursByCountry(@RequestPayload GetToursByCountryRequest getToursByCountryRequest) {
         List<Tour> tours = tourService.findByCountry(getToursByCountryRequest.getId());
         GetToursByCountryResponse toursResponse = new GetToursByCountryResponse();
         toursResponse.setTours(tours);
@@ -51,7 +53,7 @@ public class TourEndpointImpl implements TourEndpoint {
     @Override
     @SoapAction(value = NAMESPACE_URI + "saveTour")
     @ResponsePayload
-    public SaveTourResponse saveTour(SaveTourRequest saveTourRequest) {
+    public SaveTourResponse saveTour(@RequestPayload SaveTourRequest saveTourRequest) {
         Tour tour = new Tour(
                 1L,
                 saveTourRequest.getDate(),
@@ -68,7 +70,7 @@ public class TourEndpointImpl implements TourEndpoint {
     @Override
     @SoapAction(value = NAMESPACE_URI + "updateTour")
     @ResponsePayload
-    public UpdateTourResponse updateTour(UpdateTourRequest updateTourRequest) {
+    public UpdateTourResponse updateTour(@RequestPayload UpdateTourRequest updateTourRequest) {
         Tour tour = new Tour(
                 updateTourRequest.getId(),
                 updateTourRequest.getDate(),
@@ -85,7 +87,7 @@ public class TourEndpointImpl implements TourEndpoint {
     @Override
     @SoapAction(value = NAMESPACE_URI + "deleteTour")
     @ResponsePayload
-    public DeleteTourResponse deleteTour(DeleteTourRequest deleteTourRequest) {
+    public DeleteTourResponse deleteTour(@RequestPayload DeleteTourRequest deleteTourRequest) {
         Tour tour = tourService.delete(deleteTourRequest.getId()).orElse(null);
         DeleteTourResponse tourResponse =new DeleteTourResponse();
         tourResponse.setTour(tour);

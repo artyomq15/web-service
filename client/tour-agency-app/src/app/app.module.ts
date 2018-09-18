@@ -9,6 +9,8 @@ import { NgxSoapModule } from 'ngx-soap';
 import { CountrySoapService } from './services/country.soap.service';
 import { CountryService } from './services/CountryService';
 import { TourModifierComponent } from './tour-modifier/tour-modifier.component';
+import { TourSoapService } from './services/tour.soap.service';
+import { TourService } from './services/TourService';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import { TourModifierComponent } from './tour-modifier/tour-modifier.component';
     NgxSoapModule
   ],
   providers: [
-    {provide: CountryService, useClass: CountrySoapService}
+    { provide: CountryService, useClass: CountrySoapService },
+    { provide: TourService, useClass: TourSoapService }
   ],
   bootstrap: [AppComponent]
 })

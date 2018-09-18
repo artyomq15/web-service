@@ -15,7 +15,7 @@ import java.time.LocalDate;
 @XmlRootElement(name = "updateTourRequest")
 public class UpdateTourRequest {
     private Long id;
-    private LocalDate date;
+    private String date;
     private String description;
     private BigDecimal cost;
     private Long countryId;

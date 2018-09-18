@@ -7,7 +7,7 @@ import java.time.LocalDate;
 
 public class TourValidator extends Validator {
 
-    public boolean isValidDate(LocalDate date) {
+    public boolean isValidDate(String date) {
         return date != null;
     }
 

@@ -10,7 +10,7 @@ import javax.xml.bind.annotation.XmlType;
 @Data
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = { "id" })
-@XmlRootElement(name = "getToursByRequest")
+@XmlRootElement(name = "getToursByCountryRequest")
 public class GetToursByCountryRequest {
     private Long id;
 }

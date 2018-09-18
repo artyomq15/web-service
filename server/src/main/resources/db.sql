@@ -80,3 +80,13 @@ ENGINE = InnoDB;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+ALTER TABLE `touragency`.`tour`
+DROP FOREIGN KEY `fk_tour_country1`;
+ALTER TABLE `touragency`.`tour`
+ADD CONSTRAINT `fk_tour_country1`
+  FOREIGN KEY (`country_country_id`)
+  REFERENCES `touragency`.`country` (`country_id`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE;
+

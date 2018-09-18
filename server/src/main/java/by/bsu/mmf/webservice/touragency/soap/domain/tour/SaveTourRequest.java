@@ -14,7 +14,7 @@ import java.time.LocalDate;
 @XmlType(name = "", propOrder = { "date", "description", "cost", "countryId" })
 @XmlRootElement(name = "saveTourRequest")
 public class SaveTourRequest {
-    private LocalDate date;
+    private String date;
     private String description;
     private BigDecimal cost;
     private Long countryId;
