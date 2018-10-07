@@ -1,0 +1,15 @@
+<h1 mat-dialog-title>Add country</h1>
+<div mat-dialog-content>
+  <form [formGroup]="addForm">
+    <mat-form-field>
+      <input matInput type="text" placeholder="Name" formControlName="name" cdkFocusInitial>
+      <mat-error *ngIf="addForm.controls.name.errors && addForm.controls.name.errors.required">
+        Name is required
+      </mat-error>
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button [mat-dialog-close]="onSubmit()">OK</button>
+</div>

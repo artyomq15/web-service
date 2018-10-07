@@ -23,7 +23,7 @@ export class CountrySoapService implements CountryService {
             .catch(err => throwError(err));
     }
     
-    public findAll(): Observable<Country[]> {
+    public getAll(): Observable<Country[]> {
         return this.client
                 .call('getCountries', {})
                 .pipe(
@@ -32,7 +32,7 @@ export class CountrySoapService implements CountryService {
                 );
     }
 
-    public findOne(id: number): Observable<Country> {
+    public get(id: number): Observable<Country> {
         return this.client
                 .call('getCountry', {id})
                 .pipe(
@@ -40,7 +40,7 @@ export class CountrySoapService implements CountryService {
                     catchError(err => throwError(err))
                 );
     }
-    public save(country: Country): Observable<Country> {
+    public add(country: Country): Observable<Country> {
         const body = {
             name: country.name
         }
@@ -63,7 +63,7 @@ export class CountrySoapService implements CountryService {
                     catchError(err => throwError(err))
                 );
     }
-    public delete(id: number): Observable<Country> {
+    public remove(id: number): Observable<Country> {
         return this.client
                 .call('deleteCountry', {id})
                 .pipe(

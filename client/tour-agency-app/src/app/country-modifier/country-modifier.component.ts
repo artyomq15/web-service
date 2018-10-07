@@ -1,6 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CountryService } from '../services/CountryService';
 import { Country } from '../domain/Country';
+import { MatDialog } from '@angular/material';
+import { UpdateCountryDialogComponent } from '../update-country-dialog/update-country-dialog.component';
+import { Router } from '@angular/router';
+import { AddCountryDialogComponent } from '../add-country-dialog/add-country-dialog.component';
 
 @Component({
   selector: 'app-country-modifier',
@@ -10,85 +14,77 @@ import { Country } from '../domain/Country';
 export class CountryModifierComponent implements OnInit {
 
   countries: Country[];
-  country: Country;
-  getId: number = 1;
-  saveName: string = "Russia";
-  savedCountry: Country;
-  updateId: number = 1;
-  updateName: string = "Belarus";
-  updatedCountry: Country;
-  deleteId: number= 1;
-  deletedCountry: Country;
 
-  constructor(private countryService: CountryService) { }
+  constructor(
+    private countryService: CountryService,
+    public dialog: MatDialog,
+    private router: Router
+  ) { }
 
-  ngOnInit() { }
+  ngOnInit() { 
+    this.getAll();
+  }
 
-  private findAllCountries(): void {
-    this.countryService.findAll().subscribe(
+  openUpdateDialog(country: Country): void {
+    const dialogRef = this.dialog.open(UpdateCountryDialogComponent, {
+      data: {name: country.name}
+    });
+
+    dialogRef.afterClosed().subscribe((name: string) => {
+      if (name && country.name !== name) {
+        this.update(new Country(country.id, name));
+      }
+    });
+  }
+
+  openAddDialog(): void {
+    const dialogRef = this.dialog.open(AddCountryDialogComponent);
+
+    dialogRef.afterClosed().subscribe((name: string) => {
+      if (name) {
+        this.add(name);
+      }
+    });
+  }
+
+  private getAll(): void {
+    this.countryService.getAll().subscribe(
       (res: Country[]) => {
         this.countries = res;
       }
     );
   }
 
-  public get() {
-    this.findCountry(this.getId);
-  }
-
-  private findCountry(id:number): void {
-    this.countryService.findOne(id).subscribe(
-      (res: Country) => {
-        this.country = res;
+  private add(name: string): void {
+    this.countryService.add(new Country(1, name)).subscribe(
+      () => {
+        this.getAll();
       },
       (err:Error) => {
-        this.country = new Country(0, "NOT A COOUNTRY");
-      }
-    );
-  }
-
-  public saveMe() {
-    this.saveCountry(this.saveName);
-  }
-
-  private saveCountry(name: string): void {
-    this.countryService.save(new Country(1, name)).subscribe(
-      (res: Country) => {
-        this.savedCountry = res;
-      },
-      (err:Error) => {
-        this.savedCountry = new Country(0, "NOT A COOUNTRY");
+        this.router.navigate(['/not_found']);
       }
     )
   }
 
-  public update() {
-    this.updateCountry(new Country(this.updateId, this.updateName));
-  }
-
-  private updateCountry(country: Country): void {
+  private update(country: Country): void {
     console.log(country);
     this.countryService.update(country).subscribe(
-      (res: Country) => {
-        this.updatedCountry = res;
+      () => {
+        this.getAll();
       },
       (err:Error) => {
-        this.updatedCountry = new Country(0, "NOT A COOUNTRY");
+        this.router.navigate(['/not_found']);
       }
     )
   }
 
-  public delete() {
-    this.deleteCountry(this.deleteId);
-  }
-
-  private deleteCountry(id: number): void {
-    this.countryService.delete(id).subscribe(
-      (res: Country) => {
-        this.deletedCountry = res;
+  private delete(id: number): void {
+    this.countryService.remove(id).subscribe(
+      () => {
+        this.getAll();
       },
       (err:Error) => {
-        this.deletedCountry = new Country(0, "NOT A COOUNTRY");
+        this.router.navigate(['/not_found']);
       }
     )
   }

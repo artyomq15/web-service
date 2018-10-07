@@ -33,7 +33,8 @@ public class TourEndpointImpl implements TourEndpoint {
     @Override
     @SoapAction(value = NAMESPACE_URI + "getTours")
     @ResponsePayload
-    public GetToursResponse getTours(@RequestPayload GetToursRequest getToursRequest) {
+    public GetToursResponse getTours(@RequestPayload GetToursRequest getToursRequest
+    ) {
         List<Tour> tours = tourService.findAll();
         GetToursResponse toursResponse = new GetToursResponse();
         toursResponse.setTours(tours);

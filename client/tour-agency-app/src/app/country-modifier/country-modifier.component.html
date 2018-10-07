@@ -1,30 +1,18 @@
-<h1>Countries</h1>
-<button (click)="findAllCountries()">find all</button>
-<div *ngFor="let country of countries">
-  <p>#{{country.id}}. {{country.name}}</p>
+<div class="container">
+  <div>
+      <button mat-raised-button (click)="openAddDialog()">
+        Add country <mat-icon>add</mat-icon>
+      </button>
+  </div>
+  <div *ngFor="let country of countries">
+    <div class="country">
+      <span>{{country.name}}</span>
+      <button mat-icon-button (click)="openUpdateDialog(country)">
+        <mat-icon>create</mat-icon>
+      </button>
+      <button mat-icon-button (click)="delete(country.id)">
+        <mat-icon>clear</mat-icon>
+      </button>
+    </div>
+  </div>
 </div>
-<hr>
-<form>
-  <input type="number" name="country-id" [(ngModel)]="getId"/>
-  <input type="submit" value="find" (click)="get()">
-</form>
-<div *ngIf="country">#{{country.id}}. {{country.name}}</div>
-<hr>
-<form>
-  <input type="text" name="country-name" [(ngModel)]="saveName"/>
-  <input type="submit" value="save" (click)="saveMe()">
-</form>
-<div *ngIf="savedCountry">#{{savedCountry.id}}. {{savedCountry.name}}</div>
-<hr>
-<form>
-  <input type="number" name="country-id" [(ngModel)]="updateId"/>
-  <input type="text" name="country-name" [(ngModel)]="updateName"/>
-  <input type="submit" value="update" (click)="update()">
-  <div *ngIf="updatedCountry">#{{updatedCountry.id}}. {{updatedCountry.name}}</div>
-</form>
-<hr>
-<form>
-  <input type="number" name="country-id" [(ngModel)]="deleteId"/>
-  <input type="submit" value="delete" (click)="delete()">
-  <div *ngIf="deletedCountry">#{{deletedCountry.id}}. {{deletedCountry.name}}</div>
-</form>

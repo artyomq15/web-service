@@ -4,9 +4,9 @@ import { Injectable } from "@angular/core";
 
 @Injectable()
 export abstract class CountryService {
-    abstract findAll(): Observable<Country[]>;
-    abstract findOne(id: number): Observable<Country>;
-    abstract save(country: Country): Observable<Country>;
+    abstract getAll(): Observable<Country[]>;
+    abstract get(id: number): Observable<Country>;
+    abstract add(country: Country): Observable<Country>;
     abstract update(country: Country): Observable<Country>;
-    abstract delete(id: number): Observable<Country>;
+    abstract remove(id: number): Observable<Country>;
 }

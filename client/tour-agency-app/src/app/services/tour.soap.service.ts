@@ -22,7 +22,7 @@ export class TourSoapService implements TourService {
             .catch(err => throwError(err));
     }
 
-    public findAll(): Observable<Tour[]> {
+    public getAll(): Observable<Tour[]> {
         return this.client
                 .call('getTours', {})
                 .pipe(
@@ -31,7 +31,7 @@ export class TourSoapService implements TourService {
                 );
     }
 
-    public findByCountry(id: number): Observable<Tour[]> {
+    public getByCountry(id: number): Observable<Tour[]> {
         return this.client
             .call('getToursByCountry', {id})
             .pipe(
@@ -40,7 +40,7 @@ export class TourSoapService implements TourService {
             );
     }
 
-    public findOne(id: number): Observable<Tour> {
+    public get(id: number): Observable<Tour> {
         return this.client
                 .call('getTour', {id})
                 .pipe(
@@ -49,7 +49,7 @@ export class TourSoapService implements TourService {
                 );
     }
 
-    public save(tour: Tour): Observable<Tour> {
+    public add(tour: Tour): Observable<Tour> {
         console.log(tour);
         const body = {
             date: tour.date,
@@ -81,7 +81,7 @@ export class TourSoapService implements TourService {
                 );
     }
 
-    public delete(id: number): Observable<Tour> {
+    public remove(id: number): Observable<Tour> {
         return this.client
             .call('deleteTour', {id})
             .pipe(

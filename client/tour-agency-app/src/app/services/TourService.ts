@@ -4,10 +4,10 @@ import { Tour } from "../domain/Tour";
 
 @Injectable()
 export abstract class TourService {
-    abstract findAll(): Observable<Tour[]>;
-    abstract findByCountry(id: number): Observable<Tour[]>;
-    abstract findOne(id: number): Observable<Tour>;
-    abstract save(tour: Tour): Observable<Tour>;
+    abstract getAll(): Observable<Tour[]>;
+    abstract getByCountry(id: number): Observable<Tour[]>;
+    abstract get(id: number): Observable<Tour>;
+    abstract add(tour: Tour): Observable<Tour>;
     abstract update(tour: Tour): Observable<Tour>;
-    abstract delete(id: number): Observable<Tour>;
+    abstract remove(id: number): Observable<Tour>;
 }

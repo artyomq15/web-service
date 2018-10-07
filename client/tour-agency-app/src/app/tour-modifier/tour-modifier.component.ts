@@ -39,7 +39,7 @@ export class TourModifierComponent implements OnInit {
   }
 
   public findAllTours() {
-    this.tourService.findAll().subscribe(
+    this.tourService.getAll().subscribe(
       res => this.tours = res
     );
   }
@@ -55,7 +55,7 @@ export class TourModifierComponent implements OnInit {
   }
 
   private saveTour(tour: Tour) {
-    this.tourService.save(tour).subscribe(
+    this.tourService.add(tour).subscribe(
       (res: Tour) => {
         this.savedTour = res;
       },
@@ -91,7 +91,7 @@ export class TourModifierComponent implements OnInit {
   }
 
   private deleteTour(id: number) {
-    this.tourService.delete(id).subscribe(
+    this.tourService.remove(id).subscribe(
       (res: Tour) => {
         this.deletedTour = res;
       },
@@ -106,7 +106,7 @@ export class TourModifierComponent implements OnInit {
   }
 
   private getTour(id: number) {
-    this.tourService.findOne(id).subscribe(
+    this.tourService.get(id).subscribe(
       (res: Tour) => {
         this.tour = res;
         
@@ -124,7 +124,7 @@ export class TourModifierComponent implements OnInit {
   }
 
   private getTourByCountry(id: number) {
-    this.tourService.findByCountry(id).subscribe(
+    this.tourService.getByCountry(id).subscribe(
       (res: Tour[]) => {
         this.toursByCountry = res;
       }
