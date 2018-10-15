@@ -23,7 +23,7 @@ public class CountryController {
         try {
             return new ResponseEntity<>(countryService.findAll(), HttpStatus.OK);
         } catch (ServiceException ex) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } catch (HttpClientErrorException ex) {
             return new ResponseEntity<>(ex.getStatusCode());
         }
@@ -37,7 +37,7 @@ public class CountryController {
                     .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
 
         } catch (ServiceException ex) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } catch (HttpClientErrorException ex) {
             return new ResponseEntity<>(ex.getStatusCode());
         }
@@ -51,7 +51,7 @@ public class CountryController {
                     .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
 
         } catch (ServiceException ex) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } catch (HttpClientErrorException ex) {
             return new ResponseEntity<>(ex.getStatusCode());
         }
@@ -65,7 +65,7 @@ public class CountryController {
                     .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
 
         } catch (ServiceException ex) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } catch (HttpClientErrorException ex) {
             return new ResponseEntity<>(ex.getStatusCode());
         }
@@ -79,7 +79,7 @@ public class CountryController {
                     .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
 
         } catch (ServiceException ex) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } catch (HttpClientErrorException ex) {
             return new ResponseEntity<>(ex.getStatusCode());
         }

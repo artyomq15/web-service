@@ -47,15 +47,18 @@ export class CountryModifierComponent implements OnInit {
     });
   }
 
-  private getAll(): void {
+  public getAll(): void {
     this.countryService.getAll().subscribe(
       (res: Country[]) => {
         this.countries = res;
+      },
+      (err:Error) => {
+        this.router.navigate(['/not_found']);
       }
     );
   }
 
-  private add(name: string): void {
+  public add(name: string): void {
     this.countryService.add(new Country(1, name)).subscribe(
       () => {
         this.getAll();
@@ -66,7 +69,7 @@ export class CountryModifierComponent implements OnInit {
     )
   }
 
-  private update(country: Country): void {
+  public update(country: Country): void {
     console.log(country);
     this.countryService.update(country).subscribe(
       () => {
@@ -78,7 +81,7 @@ export class CountryModifierComponent implements OnInit {
     )
   }
 
-  private delete(id: number): void {
+  public delete(id: number): void {
     this.countryService.remove(id).subscribe(
       () => {
         this.getAll();

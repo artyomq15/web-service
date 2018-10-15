@@ -1,0 +1,18 @@
+<div class="container">
+  <div>
+      <button mat-raised-button (click)="4">
+        Add tour <mat-icon>add</mat-icon>
+      </button>
+  </div>
+  <div *ngFor="let tour of tours">
+    <div class="tour">
+      <span>{{tour.date | date: 'YYYY MM, DD'}}</span>
+      <button mat-icon-button (click)="openUpdateDialog(country)">
+        <mat-icon>create</mat-icon>
+      </button>
+      <button mat-icon-button (click)="delete(country.id)">
+        <mat-icon>clear</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>

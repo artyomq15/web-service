@@ -6,10 +6,8 @@ import { AppComponent } from './app.component';
 import { CountryModifierComponent } from './country-modifier/country-modifier.component';
 
 import { NgxSoapModule } from 'ngx-soap';
-import { CountrySoapService } from './services/country.soap.service';
 import { CountryService } from './services/CountryService';
-import { TourModifierComponent } from './tour-modifier/tour-modifier.component';
-import { TourSoapService } from './services/tour.soap.service';
+import { ToursComponent } from './tours/tours.component';
 import { TourService } from './services/TourService';
 import { MaterialModule } from './material.module';
 import { HttpClientModule } from '@angular/common/http';
@@ -22,10 +20,13 @@ import { Routes, RouterModule } from '@angular/router';
 import { CountryRestService } from './services/country.rest.service';
 import { AddCountryDialogComponent } from './add-country-dialog/add-country-dialog.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { TourRestService } from './services/tour.rest.service';
+import { TourModifierComponent } from './tour-modifier/tour-modifier.component';
 
 export const appRoutes: Routes = [
   { path: 'countries', component: CountryModifierComponent },
-  { path: 'tours', component: TourModifierComponent },
+  { path: 'tours', component: ToursComponent },
+  { path: 'tourss', component: TourModifierComponent },
   { path: 'not_found', component: NotFoundPageComponent },
   { path: '**',  redirectTo: 'countries' }
 ];
@@ -35,11 +36,12 @@ export const appRoutes: Routes = [
   declarations: [
     AppComponent,
     CountryModifierComponent,
-    TourModifierComponent,
+    ToursComponent,
     UpdateCountryDialogComponent,
     NotFoundPageComponent,
     AddCountryDialogComponent,
-    NavbarComponent
+    NavbarComponent,
+    TourModifierComponent
   ],
   imports: [
     MaterialModule,
@@ -54,7 +56,7 @@ export const appRoutes: Routes = [
   ],
   providers: [
     { provide: CountryService, useClass: CountryRestService },
-    { provide: TourService, useClass: TourSoapService }
+    { provide: TourService, useClass: TourRestService }
   ],
   bootstrap: [AppComponent],
   entryComponents: [
