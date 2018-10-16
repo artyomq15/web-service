@@ -26,25 +26,22 @@ export class CountryModifierComponent implements OnInit {
   }
 
   openUpdateDialog(country: Country): void {
-    const dialogRef = this.dialog.open(UpdateCountryDialogComponent, {
-      data: {name: country.name}
+    const update = this.dialog.open(UpdateCountryDialogComponent, {
+      data: { country: country }
     });
 
-    dialogRef.afterClosed().subscribe((name: string) => {
-      if (name && country.name !== name) {
-        this.update(new Country(country.id, name));
-      }
-    });
+    update.componentInstance.updated.subscribe(
+      (country: Country) => this.update(country)
+    );
+    
   }
 
   openAddDialog(): void {
-    const dialogRef = this.dialog.open(AddCountryDialogComponent);
+    const add = this.dialog.open(AddCountryDialogComponent);
 
-    dialogRef.afterClosed().subscribe((name: string) => {
-      if (name) {
-        this.add(name);
-      }
-    });
+    add.componentInstance.added.subscribe(
+      (name: string) => this.add(name)
+    );
   }
 
   public getAll(): void {

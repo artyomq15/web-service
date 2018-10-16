@@ -1,28 +1,31 @@
-<form [formGroup]="tourForm">
-  <mat-form-field>
+<form [formGroup]="tourForm" class="tour-form">
+  <mat-form-field class="tour-form--item">
     <input matInput type="date" placeholder="Date" formControlName="date" cdkFocusInitial>
     <mat-error *ngIf="tourForm.controls.date.errors && tourForm.controls.date.errors.required">
       Date is required
     </mat-error>
   </mat-form-field>
-  <mat-form-field>
+  <mat-form-field class="tour-form--item">
     <textarea matInput type="text" placeholder="Description" formControlName="description"></textarea>
     <mat-error *ngIf="tourForm.controls.description.errors && tourForm.controls.description.errors.required">
       Description is required
     </mat-error>
   </mat-form-field>
-  <mat-form-field>
+  <mat-form-field class="tour-form--item">
     <input matInput type="number" placeholder="Cost" formControlName="cost">
     <mat-error *ngIf="tourForm.controls.cost.errors && tourForm.controls.cost.errors.required">
       Cost is required
     </mat-error>
   </mat-form-field>
-  <mat-form-field>
-    <mat-select placeholder="Country" ([value])="selectedCountry">
-      <mat-option *ngFor="let country of countries" value="country.id">
+  <mat-form-field class="tour-form--item">
+    <mat-select placeholder="Country" formControlName="countryId">
+      <mat-option *ngFor="let country of countries" value="{{country.id}}">
         {{country.name}}
       </mat-option>
     </mat-select>
   </mat-form-field>
+  <button mat-raised-button class="tour-form--item" (click)="onSubmit()">
+    Submit
+  </button>
   
 </form>

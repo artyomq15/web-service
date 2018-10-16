@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, Output, EventEmitter } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 
@@ -10,6 +10,8 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 export class AddCountryDialogComponent implements OnInit {
 
   addForm: FormGroup;
+
+  @Output() added: EventEmitter<string> = new EventEmitter<string>();
 
   constructor(
     public dialogRef: MatDialogRef<AddCountryDialogComponent>,
@@ -26,7 +28,8 @@ export class AddCountryDialogComponent implements OnInit {
 
   onSubmit() {
     if (this.addForm.valid) {
-      return this.addForm.controls.name.value;
+      this.added.emit(this.addForm.controls.name.value);
+      this.onNoClick();
     }
   }
 
