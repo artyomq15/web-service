@@ -3,6 +3,7 @@ package by.bsu.mmf.webservice.touragency.controller;
 import by.bsu.mmf.webservice.touragency.domain.Tour;
 import by.bsu.mmf.webservice.touragency.service.TourService;
 import by.bsu.mmf.webservice.touragency.service.exception.ServiceException;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +19,7 @@ public class TourController {
 
     private TourService tourService;
 
+    @ApiOperation(value = "Get list of all tours")
     @GetMapping()
     public ResponseEntity<List<Tour>> getAll() {
         try {
@@ -29,6 +31,7 @@ public class TourController {
         }
     }
 
+    @ApiOperation(value = "Get tour by id")
     @GetMapping("{id}")
     public ResponseEntity<Tour> get(@PathVariable Long id) {
         try {
@@ -42,6 +45,7 @@ public class TourController {
         }
     }
 
+    @ApiOperation(value = "Add new tour")
     @PostMapping()
     public ResponseEntity add(@RequestBody Tour tour) {
         try {
@@ -55,6 +59,7 @@ public class TourController {
         }
     }
 
+    @ApiOperation(value = "Update tour")
     @PutMapping()
     public ResponseEntity update(@RequestBody Tour tour) {
         try {
@@ -68,6 +73,7 @@ public class TourController {
         }
     }
 
+    @ApiOperation(value = "Delete tour by id")
     @DeleteMapping("{id}")
     public ResponseEntity remove(@PathVariable Long id) {
         try {

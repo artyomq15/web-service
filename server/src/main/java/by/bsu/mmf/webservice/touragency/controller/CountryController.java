@@ -3,6 +3,7 @@ package by.bsu.mmf.webservice.touragency.controller;
 import by.bsu.mmf.webservice.touragency.domain.Country;
 import by.bsu.mmf.webservice.touragency.service.CountryService;
 import by.bsu.mmf.webservice.touragency.service.exception.ServiceException;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +19,7 @@ public class CountryController {
 
     private CountryService countryService;
 
+    @ApiOperation(value = "Get list of all countries")
     @GetMapping()
     public ResponseEntity<List<Country>> getAll() {
         try {
@@ -29,6 +31,7 @@ public class CountryController {
         }
     }
 
+    @ApiOperation(value = "Get country by id")
     @GetMapping("{id}")
     public ResponseEntity<Country> get(@PathVariable Long id) {
         try {
@@ -43,6 +46,7 @@ public class CountryController {
         }
     }
 
+    @ApiOperation(value = "Add new country")
     @PostMapping()
     public ResponseEntity add(@RequestBody Country country) {
         try {
@@ -57,6 +61,7 @@ public class CountryController {
         }
     }
 
+    @ApiOperation(value = "Update country")
     @PutMapping()
     public ResponseEntity update(@RequestBody Country country) {
         try {
@@ -71,6 +76,7 @@ public class CountryController {
         }
     }
 
+    @ApiOperation(value = "Delete country by id")
     @DeleteMapping("{id}")
     public ResponseEntity remove(@PathVariable Long id) {
         try {
